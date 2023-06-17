@@ -1,13 +1,33 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="{{url_for('static', filename='style-cookie.css')}}" rel="stylesheet" type="text/css" />
+  
+  
+    <link rel="icon" href="{{url_for('static', filename='assets/pngegg.png')}}" type="image/png">
   </head>
   <body>
+    <header class="top-bar">
+    <section class="logo">
+      <img class="logo" src="{{url_for('static', filename='assets/pngegg.png')}}" alt="logo" width="50px" height="40px">
+      <h1 class="logo-title"><a href="https://servercookie.colabbren.repl.co">Cookie Tap</a></h1>
+    </section>
+
+   
+  </header>
+    <main>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     <div id="div1">Leaderboard=</div>
 
     <script>
-      
+      document.getElementById("div1").innerHTML = "loading...";
       function showLeaderboard(){
  let leaderboard=[];
   
@@ -15,7 +35,7 @@ const options = {method: 'POST', headers: {'Content-Type': 'application/json'}, 
 
 fetch('https://cookie-2.risalahqz.repl.co/showLeaderboard', options)
   .then(response => response.json())
-  .then(response => {console.log("dari");leaderboard.push(response);console.log(response,"yey",leaderboard);console.log("berhasil");const element = document.getElementById("div1");let lister=leaderboard;for (let i = 0; i < lister[0].length; i++) {
+  .then(response => {console.log("dari");leaderboard.push(response);console.log(response,"yey",leaderboard);console.log("berhasil");document.getElementById("div1").innerHTML = "Leaderboard= ";;const element = document.getElementById("div1");let lister=leaderboard;for (let i = 0; i < lister[0].length; i++) {
       console.log(i,lister[0][i]);
 	let paras = document.createElement("p");
     let nodes = document.createTextNode(i+1);
@@ -65,5 +85,7 @@ function sleep(ms) {
 
 
   </script>  
+      </main>
+    
   </body>
 </html>
