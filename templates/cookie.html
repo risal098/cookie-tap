@@ -6,40 +6,141 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <link href="{{url_for('static', filename='style-cookie.css')}}" rel="stylesheet" type="text/css" />
+  
+  
+    <link rel="icon" href="{{url_for('static', filename='assets/pngegg.png')}}" type="image/png">
   <script src="{{url_for('static', filename='cookie.js')}}" ></script>
   <script>let tapcookie=0;</script>
-  
+  <style>p.groove {background-color:red;background-size: auto; }
+  fieldset {
+  border: 1px solid blue;
+  color: black;
+  text-align: center;
+  width: 200px;
+    padding-left: 10px;
+}
+legend {
+  padding:  10px;
+}</style>
+
+
+<style>
+    
+  </style>
+
+<style>.text {
+      padding-left: 10px;
+    }</style>
+
+
+
+
+
+
+
+
   
 </head>
 
 <body>
-  <style>
- </style>
+  <header class="top-bar">
+    <section class="logo">
+      <img class="logo" src="{{url_for('static', filename='assets/pngegg.png')}}" alt="logo" width="50px" height="40px">
+      <h1 class="logo-title"><a href="https://cookie-1.risalahqz.repl.co">Cookie Tap</a></h1>
+    </section>
+
+    <section>
+      <nav class="nav">
+        <ul class="nav_links">
+          <li><button class="ld1"><a href="https://cookie-1.risalahqz.repl.co/leaderboard"
+                >Leaderboards</a></button></li>
+       
+        </ul>
+         <nav class="nav">
+        <ul class="nav_links">
+          <li><button id="lamgu" class="ld1" onclick="lagu()">
+                >sound</a></button>
+          <script>
+            var audios = new Audio("{{url_for('static', filename='assets/cookie_theme.mp3')}}");
+            let mute=0
+        function lagu(){
+          console.log(mute);
+          var audio = new Audio("{{url_for('static', filename='assets/button_tap.mp3')}}");
+    audio.loop = false;
+audio.play();
+          mute++;
+    if (mute%2!=0){audios.loop = true;
+        audios.muted = false;
+    audios.volume = 0.7;
+          console.log("goyans");document.getElementById("lamgu").innerHTML =">sound";
+audios.play();}else{audios.muted=true;document.getElementById("lamgu").innerHTML ="muted";}}
+        
+  </script>
+          </li>
+       
+        </ul>
+      </nav>
+      </nav>
+      
+    </section>
+<!--    <section>
+      <nav class="nav">
+        <ul class="nav_links">
+          <li><button class="ld1" onclick="lagu()">
+                >sound</a></button>
+          <script>
+        function lagu(){
+    var audios = new Audio("{{url_for('static', filename='assets/kemalingan.mp3')}}");
+    audios.loop = true;
+        audios.muted = false;
+    //audios.volume = 0.4;
+          console.log("goyans");
+audios.play();}
+        
+  </script>
+          </li>
+       
+        </ul>
+      </nav>
+    </section> -->
+  </header>
+ <main >
  
  
-  <p>cookie</p>
-  <button  class="cookiebutton" alt="logo" id="cookieTap" onclick="taptap()" >cookie Tap</button><br>
+  
+  <button  class="cookiebutton" alt="logo" id="cookieTap" onclick="taptap()" >Tap me</button><br>
  <!-- <button id="show" onclick="showMyCookie()">show my cookies</button>
+   
   --><br>
-  <p>my cookies</p>
+   <br>
+   <br>
+   <br>
+   <p class="text">  tap as much as you can and beat your friend<br>  "well i mean in leaderboard rank ofcurse"</p>
+   <br>
+   <fieldset >
+  <legend >my cookies &#127850;</legend>
   <p id="showCookies"></p>
+</fieldset>
+  
   <br>
   
   <br>
-  <p>wanna share your cookies to other person? type the name and amount of the cookies</p>
-  <form id="giveCookies"  >
+  <p class="text">  wanna share your cookies to other person? type the name and amount of the cookies</p>
+  <form id="giveCookies" class="text" >
   username: <input type="text"  value=""><br>
   amount: <input type="number" id="quantity" name="quantity" min="0" max="5000000">><br> 
 </form>
 <p id="info"></p>
 
-  <button id="giveCookie" onclick="giveCookies()">give cookies</button>
+  <button id="giveCookie" class="login-bt" onclick="giveCookies()">give cookies</button>
 
   <script > function giveCookies() {
   var x = document.getElementById("giveCookies");
   let targetname=x.elements[0].value;
   let quantity=x.elements[1].value;
-  
+  var audio = new Audio("{{url_for('static', filename='assets/button_tap.mp3')}}");
+    audio.loop = false;
+audio.play();
   
   let payload=JSON.stringify({request:[username,quantity,targetname]});
   console.log((payload),typeof(payload));
@@ -52,7 +153,7 @@
 
 
     let cookies=0;
-    let tempdata=fetch('https://serverCookie.colabbren.repl.co/giveCookies', options)
+    let tempdata=fetch('https://cookie-1.risalahqz.repl.co/giveCookies', options)
   .then(response => response.json())
   .then(data => {
     
@@ -72,42 +173,124 @@
 
 
 
+ 
+   <div id="myObjects"></div>
+<style>
+    
+  </style>
+   <script>
+ function thief(){
+   console.log("thief uga nyala");
+   let HP=3;
+   var audio = new Audio("{{url_for('static', filename='assets/maling_spawn.mp3')}}");
+    audio.loop = false;
+audio.play();
+    var object = document.getElementById('myObjects');
+    var maxX = window.innerWidth - object.offsetWidth;
+    var maxY = window.innerHeight - object.offsetHeight;
+    var clickCount = 0;
 
+    function createObject() {
+      var object = document.createElement('div');
+        let img = document.createElement("img");
+        object.id = "myObject";
+        img.src = "{{url_for('static', filename='assets/thief.png')}}";
+        img.height = "100";
+        img.width = 100;
+        object.appendChild(img);
+        document.body.appendChild(object);
+      
 
+      object.addEventListener('click', handleClick);
 
+      function handleClick() {
+        clickCount++;
+        var audio = new Audio("{{url_for('static', filename='assets/maling_hit.mp3')}}");
+    audio.loop = false;
+audio.play();
+        if (clickCount >= HP) {
+          var audio = new Audio("{{url_for('static', filename='assets/maling_mati.mp3')}}");
+    audio.loop = false;
+audio.play();
+          hideObject();
+        }
+      }
 
+      function hideObject() {
+        
+        object.style.display = 'none';
+        
+      }
 
+      moveObject();
 
+      function moveObject() {
+        if (clickCount >= HP) {
+          return; // Stop moving when clicked three times
+        }
 
+        var startX = Math.floor(Math.random() * maxX / 2 + 500);
+        var startY = Math.floor(Math.random() * maxY / 2 + 200);
+        var endX = 70;
+        var endY = 220;
+        var duration = 1000; // Transition duration in milliseconds
 
+        object.style.left = startX + 'px';
+        object.style.top = startY + 'px';
 
+        // Move towards the coordinate (0, 0)
+        var dx = (endX - startX) / duration; // Calculate the distance to move in each frame
+        var dy = (endY - startY) / duration;
+        var frameRate = 10; // Number of frames per second
+        var interval = Math.floor(Math.random() * 20) + 5 / frameRate; // Interval between each frame in milliseconds
 
+        var timer = setInterval(function () {
+          startX += dx;
+          startY += dy;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          object.style.left = startX + 'px';
+          object.style.top = startY + 'px';
+function thiefsucces(){
+  let thiefcookie=-10;
+  var audio = new Audio("{{url_for('static', filename='assets/kemalingan.mp3')}}");
+    audio.loop = false;
+audio.play();
+  let payload=JSON.stringify({request:[username,password,thiefcookie]});
+  console.log((payload),typeof(payload));
+  const options = {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: payload
+};
+    let cookies=0;
+    fetch('https://cookie-1.risalahqz.repl.co/sendCookies', options)
+  .then(response => response.json())
+  .then(data => {console.log("thief succes");
+    
   
-  <script>
+    
+    }
+       )
+  
+  
+  .catch(err => console.error(err));
+}
+          // Check if the object has reached the coordinate (0, 0)
+          if (startX <= endX && startY <= endY) {
+            if (clickCount<HP){thiefsucces();console.log("thief failed yes");}
+            
+            clearInterval(timer);
+            moveObject(); // Start the next movement
+          }
+        }, interval);
+      }
+    }
+
+    // Spawn object at random position initially
+    createObject();
+    }
+     
+     
 function showMyCookie(){
 let payload=JSON.stringify({request:[username,password]});
   console.log((payload),typeof(payload));
@@ -120,11 +303,13 @@ let payload=JSON.stringify({request:[username,password]});
 
 
     
-    fetch('https://serverCookie.colabbren.repl.co/showCookies', options)
+    fetch('https://cookie-1.risalahqz.repl.co/showCookies', options)
   .then(response => response.json())
-  .then(data => {cacheShowMyCookie=data.respond;console.log(cacheShowMyCookie,"response");document.getElementById("showCookies").innerHTML = cacheShowMyCookie;})
+  .then(data => {cacheShowMyCookie=data.respond;console.log(cacheShowMyCookie,"response");document.getElementById("showCookies").innerHTML = cacheShowMyCookie;function randomThief(){let random=Math.random()*10;console.log("aku nyala ",random);if(random>7){thief()}};
+     
+     if(cacheShowMyCookie>40){var timeout = setTimeout(function(){randomThief()},3000);}console.log("gk nyala",cacheShowMyCookie);})
     .catch(err => console.error(err));
-  
+
     
     }
   
@@ -149,7 +334,9 @@ let payload=JSON.stringify({request:[username,password]});
       tapcookie+=1;
       cacheShowMyCookie+=1;
       document.getElementById("showCookies").innerHTML = cacheShowMyCookie;
-      
+      var audio = new Audio("{{url_for('static', filename='assets/cookie_tap.mp3')}}");
+    audio.loop = false;
+audio.play();
     }
   </script>
 
@@ -167,11 +354,8 @@ let payload=JSON.stringify({request:[username,password]});
   headers: {'Content-Type': 'application/json'},
   body: payload
 };
-
-
-
     let cookies=0;
-    fetch('https://serverCookie.colabbren.repl.co/sendCookies', options)
+    fetch('https://cookie-1.risalahqz.repl.co/sendCookies', options)
   .then(response => response.json())
   .then(data => {console.log("send succes",tapcookie);showMyCookie();
     
@@ -182,16 +366,14 @@ let payload=JSON.stringify({request:[username,password]});
   
   
   .catch(err => console.error(err));
-                         
-  
+
 
 }
    setInterval(sendCookie, 5000);
   
  </script>
-
-
-
+   
+  </main>
   
 </body>
 
