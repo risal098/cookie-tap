@@ -18,6 +18,9 @@ dataCache = []
 
 def writeDatabase(save):
   database = open(r"database.json", "w")
+  for x in save["account"]:
+    if type(x["cookie"]) != type(12):
+      x["cookie"] = 1
   database.write(json.dumps(save))
   database.close()
 
@@ -27,6 +30,15 @@ def loadDatabase():
   tempdata = json.loads(database.read())  #dict database
   database.close()
   return tempdata
+
+
+def antikaisan(database):
+  for x in database["account"]:
+    #print(x["cookie"])
+    if type(x["cookie"]) != type(5):
+      x["cookie"] = 1
+  writeDatabase(database)
+  return loadDatabase()
 
 
 def userfinder(database, name):
@@ -57,9 +69,13 @@ def userFinderLogin(database, name, password):
 
 def sendLeaderboard():
   while True:
-    time.sleep(7)
-    url = "https://cookie-2.risalahqz.repl.co"
     data = loadDatabase()
+
+    data = antikaisan(data)
+    time.sleep(7)
+    print("sendingg leaderboard")
+    url = "https://cookie-2.risalahqz.repl.co"
+
     #print(data)
     payload = data["account"]
     headers = {"Content-Type": "application/json"}
@@ -68,8 +84,13 @@ def sendLeaderboard():
 
 
 api = Flask(__name__)
+
+
 #----------website below------------------#
 #CORS(api)
+@api.route("/antiSleep", methods=["GET"])
+def sleepReceive():
+  return "dont sleep"
 
 
 @api.route("/", methods=["GET"])
@@ -159,6 +180,10 @@ def send_cookies():
   tempname = tempuser["request"][0]
   temppass = tempuser["request"][1]
   tempcookie = tempuser["request"][2]
+  if type(tempcookie) != type(12):
+    return "not now :)"
+  if tempcookie > 50000:
+    tempcookie = 50000
   find_user, indeks = userfinder(tempdata, tempname)
   tempdata["account"][indeks]["cookie"] += tempcookie
   writeDatabase(tempdata)
