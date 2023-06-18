@@ -34,7 +34,7 @@ but becareful, there are also many thief that will steal your cookie!!!
 if you want to play this game locally or in another machine(server), you need atleast 2 machine/server/VM, in order to play it fully<br />
 1. first you have to copy code/file from main.py,database.json,static,and templates to first machine
 2. second, you have to copy code/file from server2.py and leaderboard.json to second machine (dont forget to rename server2.py to main.py on second machine)
-3. after that run the main.py on first machine, and copy the website where its running for example http://localhost:5000 and run it on your browser
+3. after that run the main.py on first machine, and copy the website where its running on first machine for example http://localhost:5000 and run it on your browser, then run server2.py/main.py on second machine (to view and process the leaderboard)
 
    
 # note:
