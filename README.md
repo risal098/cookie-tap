@@ -22,10 +22,16 @@ update:
 
 
 
-game story:
+##game story:<br />
 once upon a time, a universe create by God have very good land quality to plant various amount of crops. <br />many people create enourmous amount of food variation but none of them succed or founded the cookie recipe <br />
 your task is to built factory that create cookies, but since its like a real world, once you founded something new, people try to copycat your achievement so they also want to make cookie factory too <br />
 your goals is to be the biggest cookie factory by clicking the cookie as many as possible and compete in leaderboard section with other
 <br /> <br />
 but becareful, there are also many thief that will steal your cookie!!!
-  
+  <br /><br />
+
+#play game locally:<br />
+if you want to play this game locally or in another machine(server), you need atleast 2 machine/server/VM, in order to play it fully<br />
+#note:
+few changes also can make this game run in only one machine<br />
+
