@@ -1,9 +1,28 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS, cross_origin
 import json
+import threading
+import time
+import requests
 
 api = Flask(__name__)
 CORS(api)
+
+
+def antiSleep():
+
+  while True:
+    time.sleep(10)
+
+    data = json.dumps('i dont sleep')
+    #print(data)
+    payload = data
+    headers = {"Content-Type": "application/json"}
+
+    url = "https://cookie-1.risalahqz.repl.co/antiSleep"
+
+    payload = ""
+    response = requests.request("GET", url, data=payload)
 
 
 def writeDatabase(save):
@@ -45,4 +64,6 @@ def showLeaderboard():
   return json.dumps(loadDatabase())
 
 
+t = threading.Thread(target=antiSleep)
+t.start()
 api.run(host="0.0.0.0", port=8080, debug=True)
