@@ -2,7 +2,7 @@
 a game website that user play it by clicking the cookie and click it as many as possible
 
 This website is dynamic portofolio that do CRUD operation and database on json file.(on current version) 
-acces it on [https://cookie-1.risalahqz.repl.co ]
+acces it/play the game on [https://cookie-1.risalahqz.repl.co ]
 
 this gaming website is on version 0.0.1.23 beta
 feature: 
@@ -32,6 +32,12 @@ but becareful, there are also many thief that will steal your cookie!!!
 
 # play game locally:<br />
 if you want to play this game locally or in another machine(server), you need atleast 2 machine/server/VM, in order to play it fully<br />
+1. first you have to copy code/file from main.py,database.json,static,and templates to first machine
+2. second, you have to copy code/file from server2.py and leaderboard.json to second machine (dont forget to rename server2.py to main.py on second machine)
+3. after that run the main.py on first machine, and copy the website where its running for example http://localhost:5000 and run it on your browser
+
+   
 # note:
-few changes also can make this game run in only one machine<br />
+1. few changes also can make this game run in only one machine
+2. its recommend to run the code on replit (because its free) but you can also use your VM/machine in order to play it locally
 
