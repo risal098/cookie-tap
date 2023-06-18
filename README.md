@@ -21,4 +21,7 @@ update:
 - add theme and sound effect
 
 
+
+game story:
+once upon a time, a universe create by God have very good land quality to plant various amount of crops. <br />many people create enourmous amount of 
   
