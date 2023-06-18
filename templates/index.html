@@ -7,28 +7,108 @@
     <title>Cookie Tap!</title>
     <link href="{{url_for('static', filename='style-index.css')}}"  rel="stylesheet" type="text/css" />
     <link rel="icon" href="{{url_for('static', filename='assets/pngegg.png')}}" type="image/png">
+   <style>
+    .modal-wrapper {
+      background: rgba(0, 0, 0, 0.508);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: none;
+z-index: 2;
+    }
+
+    .modal {
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      max-width: 300px;
+      width: 100%;
+      background: wheat;
+      padding: 20px;
+      margin: 35vh auto;
+      border-radius: 5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .modal a {
+      text-decoration: none;
+      background: crimson;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 10px;
+      z-index: 2;
+    }
+
+    .modal-close {
+      color: red;
+      border: 1px solid black;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+      width: 20px;
+      border-radius: 5px;
+      z-index: 2;
+    }
+
+    
+  </style>
 </head>
 
 <body>
+  <script>
+    function bt_sound(){
+    var audio = new Audio("{{url_for('static', filename='assets/button_tap.mp3')}}");
+    audio.loop = false;
+audio.play();}
+  </script>
     <header class="top-bar">
         <section class="logo">
             <img class="logo" src="{{url_for('static', filename='assets/pngegg.png')}}" alt="logo" width="50px"
                 height="40px">
-            <h1 class="logo-title"><a href="https://servercookie.colabbren.repl.co">Cookie Tap</a></h1>
+            <h1 class="logo-title"><a href="https://cookie-1.risalahqz.repl.co">Cookie Tap</a></h1>
         </section>
 
         <section>
             <nav class="nav">
                 <ul class="nav_links">
-                    <li><button class="ld1"><a href="https://servercookie.colabbren.repl.co/leaderboard"
+                    <li><button class="ld1" onclick="bt_sound()"><a href="https://cookie-1.risalahqz.repl.co/leaderboard"
                                 >Leaderboards</a></button></li>
                     <li>
-                        <button class="r1"><a href="https://servercookie.colabbren.repl.co/register">Register</a>
+                        <button class="r1" onclick="bt_sound()"><a href="https://cookie-1.risalahqz.repl.co/register">Register</a>
                         </button>
                         |
-                        <button class="l1"><a href="https://servercookie.colabbren.repl.co/login">Login</a></button>
+                        <button class="l1" onclick="bt_sound()"><a href="https://cookie-1.risalahqz.repl.co/login">Login</a></button>
                     </li>
                 </ul>
+               <nav class="nav">
+        <ul class="nav_links">
+          <li><button id="lamgu" class="ld1" onclick="lagu()">
+                >sound</a></button>
+          <script>
+            var audios = new Audio("{{url_for('static', filename='assets/lobby_theme.mp3')}}");
+            let mute=0
+        function lagu(){
+          console.log(mute);
+          var audio = new Audio("{{url_for('static', filename='assets/button_tap.mp3')}}");
+    audio.loop = false;
+audio.play();
+          mute++;
+    if (mute%2!=0){audios.loop = true;
+        audios.muted = false;
+    audios.volume = 0.7;
+          console.log("goyans");document.getElementById("lamgu").innerHTML =">sound";
+audios.play();}else{audios.muted=true;document.getElementById("lamgu").innerHTML ="muted";}}
+    
+        
+  </script>
+          </li>
+       
+        </ul>
+      </nav>
             </nav>
         </section>
     </header>
@@ -36,32 +116,87 @@
     <main>
         <section class="title">
             <h1><span class="welcome">WELCOME</span> TO <span class="cookie">COOKIE</span> TAP!</h1>
+          <br>
         </section>
 
         <section class="slogan">
+          <br>
             <h2>Let our cookies blast in your mouth! </h2>
         </section>
 
         <section class="form-button">
-            <form class="login" action="https://servercookie.colabbren.repl.co/login">
+          <br>
+            <form class="login" action="https://cookie-1.risalahqz.repl.co/login">
                 <label class="login-lbl" for="Login">Are you about to make cookie factory in no time? <span
                         style="color: lime"> LOGIN </span> 
                      ASAP!</label>
-                <input class="login-bt" type="submit" value="LOGIN NOW" />
+                <input class="login-bt" type="submit" value="LOGIN NOW" onclick="bt_sound()"/>
             </form>
 
-            <form class="register" action="https://servercookie.colabbren.repl.co/register">
+            <form class="register" action="https://cookie-1.risalahqz.repl.co/register">
                 <label class="register-lbl" for="Register">Don't have an account, yet? Our buddy <span
                         style="color: lime"> Tokir </span> will do it for
                     you!</label>
-                <input class="register-bt" type="submit" value="REGISTER HERE" />
+                <input class="register-bt" type="submit" value="REGISTER HERE" onclick="bt_sound()"/>
             </form>
+          <button id="howtoplay" class="login-bt" onclick="displayer()" >HOW TO PLAY</button>
+         
         </section>
 
-        <script>
+         <div class="modal-wrapper">
+    <div class="modal">
+      <div class="modal-close">X</div>
+      <div class="modal-content">
+        <h2>HOW TO PLAY</h2>
+        <p>1. its very simple, you only have to click the big cookie icon after you logged in, click it as many as
+          possible to get the highest rank<br><br>2. when you get certain cookies, there are possibilities that thief
+          may
+          spawn and want to get your cookie, click them until they dissapear and get arrested!!!<br><br>NOTE: some thief
+          is
+          powerful so they might steal huge amount of cookies or have huge HP, so you might have to click them more than
+          reguler thief in order to arrest them
+        </p>
+
+      </div>
+    </div>
+  </div>
+          <script>
+            let modal = document.querySelector('.modal-wrapper');
+let btn = document.getElementById("howtoplay");
+let close_btn = document.querySelector('.modal-close');
+
+
+
+//  display the modal after 3 second of page load
+
+
+
+function displayer() {
+  var audio = new Audio("{{url_for('static', filename='assets/button_tap.mp3')}}");
+    audio.loop = false;
+audio.play();
+  modal.style.display = 'block';
+}
+
+//  when the user clicks on X button,close the modal
+close_btn.addEventListener('click', hide);
+
+// when user clicks anywhere outside the modal, close modal
+window.addEventListener('click', (event) => {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+});
+
+function hide() {
+  modal.style.display = 'none';
+
+}
+
         </script>
         <script></script>
     </main>
+  
 </body>
 
 </html>
