@@ -14,14 +14,42 @@
         <section class="logo">
             <img class="logo" src="{{url_for('static', filename='assets/pngegg.png')}}" alt="logo" width="50px"
                 height="40px">
-            <h1 class="logo-title"><a href="https://serverCookie.colabbren.repl.co">Cookie Tap</a></h1>
+            <h1 class="logo-title"><a href="https://cookie-1.risalahqz.repl.co">Cookie Tap</a></h1>
         </section>
-
+<script>
+  function bt_sound(){var audio = new Audio("{{url_for('static', filename='assets/button_tap.mp3')}}");
+    audio.loop = false;
+audio.play();}
+</script>
         <section>
             <nav class="nav">
                 <ul class="nav_links">
-                    <li><button class="ld1"><a href="https://servercookie.colabbren.repl.co/leaderboard" >Leaderboards</a></button></li>
+                    <li><button class="ld1" onclick="bt_sound()"><a href="https://cookie-1.risalahqz.repl.co/leaderboard" >Leaderboards</a></button></li>
                 </ul>
+               <nav class="nav">
+        <ul class="nav_links">
+          <li><button id="lamgu" class="ld1" onclick="lagu()">
+                >sound</a></button>
+          <script>
+          var audios = new Audio("{{url_for('static', filename='assets/lobby_theme.mp3')}}");
+            let mute=0
+        function lagu(){
+          console.log(mute);
+          var audio = new Audio("{{url_for('static', filename='assets/button_tap.mp3')}}");
+    audio.loop = false;
+audio.play();
+          mute++;
+    if (mute%2!=0){audios.loop = true;
+        audios.muted = false;
+    audios.volume = 0.7;
+          console.log("goyans");document.getElementById("lamgu").innerHTML =">sound";
+audios.play();}else{audios.muted=true;document.getElementById("lamgu").innerHTML ="muted";}}
+        
+  </script>
+          </li>
+       
+        </ul>
+      </nav>
             </nav>
         </section>
     </header>
@@ -56,6 +84,9 @@
         <script>
           //function stopRefresh(event) { event.preventDefault(); } 
             function submits() {
+              var audio = new Audio("{{url_for('static', filename='assets/button_tap.mp3')}}");
+    audio.loop = false;
+audio.play();
               event.preventDefault();
               
                 var x = document.getElementById("register1");
@@ -63,7 +94,7 @@
                 let username = x.elements[0].value;
                 let password = x.elements[1].value;
                 if( username==="" && password===""){document.getElementById("demo").innerHTML = "form cant be a blank identity"; return 0;}
-
+                if (username.length>15 || password.length>15){document.getElementById("demo").innerHTML = "character length to >15"; return 0;}
                 let payload = JSON.stringify({ request: [username, password] });
                 console.log((payload), typeof (payload));
                 const options = {
@@ -72,13 +103,13 @@
                     body: payload
                 };
 
-                fetch('https://serverCookie.colabbren.repl.co/registers', options)
+                fetch('https://cookie-1.risalahqz.repl.co/registers', options)
                     .then(response => response.json())
                     .then(response => {
                         if (response.respond === "existed") {
                             document.getElementById("demo").innerHTML = "The account already existed.";
                         } else {
-                            document.getElementById("demo").innerHTML = "Register succeed, login to play!";alert('Please login to play, redirecting to home page.');location.href = "https://serverCookie.colabbren.repl.co/";
+                            document.getElementById("demo").innerHTML = "Register succeed, login to play!";alert('Please login to play, redirecting to home page.');location.href = "https://cookie-1.risalahqz.repl.co";
                         }
                     })
                     .catch(err => console.error(err));
