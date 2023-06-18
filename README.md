@@ -16,8 +16,9 @@ feature:
   
 
 update:
--add thief to steal your cookie
--better ui/ux design
--add theme and sound effect
+- add thief to steal your cookie
+- better ui/ux design
+- add theme and sound effect
+
 
   
